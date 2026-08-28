@@ -92,3 +92,50 @@ footer {
     color: #45a29e;
     margin-top: 20px;
 }
+// Global registry for all game chapters
+const gameStory = {
+    chapters: {}
+};
+
+gameStory.chapters["ch1"] = {
+    title: "Chapter 1: The Void Awakening",
+    nodes: {
+        start: {
+            text: "You wake up in a windowless white room. A blinking digital panel sits before you, and a heavy iron door locks the exit to your left. What do you do?",
+            choices: [
+                { text: "Interact with the digital panel", nextNode: "panel" },
+                { text: "Try to force the iron door open", nextNode: "door" }
+            ]
+        },
+        panel: {
+            text: "The screen triggers a 60-second countdown. It demands biometric data you do not possess. A mechanical click echoes nearby.",
+            choices: [
+                { text: "Turn back and check the door", nextNode: "door" },
+                { text: "Smash the glass on the panel", nextNode: "smash_panel" }
+            ]
+        },
+        door: {
+            text: "The door is sealed tight from the outside. However, you notice a narrow seam bleeding an eerie blue light into the room.",
+            choices: [
+                { text: "Peer through the seam", nextNode: "look_inside" },
+                { text: "Kick the door with full force", nextNode: "cliffhanger" }
+            ]
+        },
+        smash_panel: {
+            text: "The panel delivers a sharp electrical shock. As you stumble backward, a hidden floor compartment pops open.",
+            choices: [
+                { text: "Inspect the hidden compartment", nextNode: "cliffhanger" }
+            ]
+        },
+        look_inside: {
+            text: "You spot a massive silhouette moving in the corridor. It freezes, turns, and stares directly at you with glowing purple eyes.",
+            choices: [
+                { text: "Step away immediately", nextNode: "cliffhanger" }
+            ]
+        },
+        cliffhanger: {
+            text: "Your action triggers a sudden system failure. The lights cut out. Total darkness. End of Part 1.",
+            choices: [] // Empty choices array signals the end of the loaded content
+        }
+    }
+};
