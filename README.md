@@ -139,3 +139,55 @@ gameStory.chapters["ch1"] = {
         }
     }
 };
+let currentChapterId = "ch1";
+let currentNodeId = "start";
+
+function initGame() {
+    const chapter = gameStory.chapters[currentChapterId];
+    document.getElementById("chapter-title").innerText = chapter.title;
+    renderNode(currentNodeId);
+}
+
+function renderNode(nodeId) {
+    currentNodeId = nodeId;
+    const chapter = gameStory.chapters[currentChapterId];
+    const node = chapter.nodes[nodeId];
+    
+    // Update the story text display
+    const textDisplay = document.getElementById("text-display");
+    textDisplay.innerText = node.text;
+
+    // Clear out previous interactive choice elements
+    const choicesContainer = document.getElementById("choices-container");
+    choicesContainer.innerHTML = "";
+
+    // Generate new interactive choice elements
+    node.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.innerText = choice.text;
+        button.classList.add("btn-choice");
+        
+        // Handle transitions to future chapters
+        button.addEventListener("click", () => {
+            if (choice.nextChapter) {
+                currentChapterId = choice.nextChapter;
+                renderNode(choice.nextNode);
+            } else {
+                renderNode(choice.nextNode);
+            }
+        });
+        choicesContainer.appendChild(button);
+    });
+
+    // Provide a placeholder message if the next chapter is still in development
+    if (node.choices.length === 0) {
+        const warning = document.createElement("p");
+        warning.style.color = "#ff4a4a";
+        warning.style.textAlign = "center";
+        warning.innerText = "Chapter 2 is coming soon! Check the GitHub repository for updates.";
+        choicesContainer.appendChild(warning);
+    }
+}
+
+// Start execution once the DOM environment is ready
+window.onload = initGame;
