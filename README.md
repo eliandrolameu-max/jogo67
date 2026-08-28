@@ -33,3 +33,62 @@ my-novel-game/
     <script src="script.js"></script>
 </body>
 </html>
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #1f2833;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px #66fcf1;
+    border: 1px solid #66fcf1;
+}
+
+h1 {
+    color: #66fcf1;
+    text-align: center;
+    margin-top: 0;
+}
+
+#text-display {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 120px;
+}
+
+.btn-choice {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    color: #66fcf1;
+    border: 2px solid #66fcf1;
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+    border-radius: 4px;
+}
+
+.btn-choice:hover {
+    background-color: #66fcf1;
+    color: #0b0c10;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #45a29e;
+    margin-top: 20px;
+}
