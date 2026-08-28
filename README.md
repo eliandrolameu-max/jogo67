@@ -189,5 +189,3 @@ function renderNode(nodeId) {
     }
 }
 
-// Start execution once the DOM environment is ready
-window.onload = initGame;
